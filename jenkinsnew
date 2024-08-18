@@ -5,7 +5,7 @@ pipeline
   {
     stage('scm checkout')
 
-{agent { label 'MAVEN' }  {steps { git branch: 'master', url: 'https://github.com/sachinydevops/mavenproject-1' }}}
+{agent { label 'MAVEN' }  steps { git branch: 'master', url: 'https://github.com/sachinydevops/mavenproject-1' }}
   
   
     stage('code comple')
@@ -14,9 +14,9 @@ pipeline
 }}}
 
 stage('execute unit test framework')
-   {agent { label 'MAVEN' } {steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) {
+   {agent { label 'MAVEN' } steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) {
     sh 'mvn test'
-  }}}}
+  }}}
 
 }
 }
